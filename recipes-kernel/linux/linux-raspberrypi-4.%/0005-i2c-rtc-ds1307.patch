@@ -1,0 +1,57 @@
+From 3f025d7e373c21213c63dde77f2a9f90f3c0110f Mon Sep 17 00:00:00 2001
+From: vladvelici <vlad.velici@gmail.com>
+Date: Fri, 15 Jun 2018 15:08:15 +0000
+Subject: [PATCH] =?UTF-8?q?=E2=80=9Ci2c-rtc,ds1307=E2=80=9D?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ arch/arm/boot/dts/bcm283x.dtsi                        | 6 ++++++
+ include/linux/input/cma3000.h                         | 0
+ include/linux/platform_data/leds-lp55xx.h             | 0
+ include/linux/platform_data/leds-s3c24xx.h            | 0
+ include/linux/platform_data/lp855x.h                  | 0
+ tools/testing/selftests/media_tests/open_loop_test.sh | 0
+ 6 files changed, 6 insertions(+)
+ mode change 100644 => 100755 include/linux/input/cma3000.h
+ mode change 100644 => 100755 include/linux/platform_data/leds-lp55xx.h
+ mode change 100644 => 100755 include/linux/platform_data/leds-s3c24xx.h
+ mode change 100644 => 100755 include/linux/platform_data/lp855x.h
+ mode change 100755 => 100644 tools/testing/selftests/media_tests/open_loop_test.sh
+
+diff --git a/arch/arm/boot/dts/bcm283x.dtsi b/arch/arm/boot/dts/bcm283x.dtsi
+index b24552c..2ac7cba 100644
+--- a/arch/arm/boot/dts/bcm283x.dtsi
++++ b/arch/arm/boot/dts/bcm283x.dtsi
+@@ -315,6 +315,12 @@
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+ 			status = "okay";
++		
++		ds1307: ds1307@68 {
++				compatible = "maxim,ds1307";
++				reg = <0x68>;
++				status = "okay";
++		};
+ 		};
+ 
+ 		i2c2: i2c@7e805000 {
+diff --git a/include/linux/input/cma3000.h b/include/linux/input/cma3000.h
+old mode 100644
+new mode 100755
+diff --git a/include/linux/platform_data/leds-lp55xx.h b/include/linux/platform_data/leds-lp55xx.h
+old mode 100644
+new mode 100755
+diff --git a/include/linux/platform_data/leds-s3c24xx.h b/include/linux/platform_data/leds-s3c24xx.h
+old mode 100644
+new mode 100755
+diff --git a/include/linux/platform_data/lp855x.h b/include/linux/platform_data/lp855x.h
+old mode 100644
+new mode 100755
+diff --git a/tools/testing/selftests/media_tests/open_loop_test.sh b/tools/testing/selftests/media_tests/open_loop_test.sh
+old mode 100755
+new mode 100644
+-- 
+2.7.4
+

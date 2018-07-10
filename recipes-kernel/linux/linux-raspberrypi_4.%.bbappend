@@ -1,0 +1,12 @@
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${PV}:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/linux-raspberrypi-4.%:"
+
+SRC_URI_append = " file://0001-spi-gpio-cs-overlay.patch "
+SRC_URI_append = " file://0002-add-enable-spi-overlay.patch "
+SRC_URI_append = " file://0003-enable-i2c-and-spi-by-default-patch.patch "
+SRC_URI_append = " file://0004-pps-overlay.patch "
+#SRC_URI_append = " file://0005-i2c-rtc-overlay.patch "
+#SRC_URI_append = " file://0006-disable-bt.patch "
+#SRC_URI_append = " file://0006-pi3-miniuart-bt-overlay.patch "
+#SRC_URI_append = " file://0007-pi3-disable-bt-overlay.dts.patch "
+#SRC_URI_append = " file://0008-fixed-intendation.patch "

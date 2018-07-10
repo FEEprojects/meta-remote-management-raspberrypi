@@ -1,0 +1,29 @@
+From e633cd225642d5d8662f7e049588555e2bd8c122 Mon Sep 17 00:00:00 2001
+From: vladvelici <vlad.velici@gmail.com>
+Date: Mon, 18 Jun 2018 18:50:46 +0000
+Subject: [PATCH] i2c-rtc overlay
+
+---
+ arch/arm/boot/dts/bcm283x.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm283x.dtsi b/arch/arm/boot/dts/bcm283x.dtsi
+index 7e4cade..943fba0 100644
+--- a/arch/arm/boot/dts/bcm283x.dtsi
++++ b/arch/arm/boot/dts/bcm283x.dtsi
+@@ -312,6 +312,12 @@
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
+ 			status = "okay";
++
++			ds1307: ds1307@68 {
++				compatible = "maxim,ds1307";
++				reg = <0x68>;
++				status = "okay";
++			};
+ 		};
+ 
+ 		i2c2: i2c@7e805000 {
+-- 
+2.7.4
+

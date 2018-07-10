@@ -1,0 +1,78 @@
+From 1dba9ecf415a9f27aa499ea50c316b51466feb05 Mon Sep 17 00:00:00 2001
+From: vladvelici <vlad.velici@gmail.com>
+Date: Tue, 19 Jun 2018 10:38:48 +0000
+Subject: [PATCH] =?UTF-8?q?=E2=80=9Cpi3-disable-bt-overlay.dts=E2=80=9D?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Documentation/ABI/testing/sysfs-bus-intel_th-devices-pti    | 0
+ Documentation/ABI/testing/sysfs-bus-intel_th-output-devices | 0
+ Documentation/ABI/testing/sysfs-bus-mcb                     | 0
+ Documentation/ABI/testing/sysfs-bus-mdio                    | 0
+ Documentation/ABI/testing/sysfs-bus-media                   | 0
+ Documentation/ABI/testing/sysfs-bus-mei                     | 0
+ Documentation/ABI/testing/sysfs-bus-pci                     | 0
+ Documentation/ABI/testing/sysfs-bus-pci-devices-cciss       | 0
+ arch/arm/boot/dts/bcm2710-rpi-3-b.dts                       | 2 +-
+ drivers/pci/pcie/portdrv.h                                  | 0
+ drivers/pci/proc.c                                          | 0
+ 11 files changed, 1 insertion(+), 1 deletion(-)
+ mode change 100644 => 100755 Documentation/ABI/testing/sysfs-bus-intel_th-devices-pti
+ mode change 100644 => 100755 Documentation/ABI/testing/sysfs-bus-intel_th-output-devices
+ mode change 100644 => 100755 Documentation/ABI/testing/sysfs-bus-mcb
+ mode change 100644 => 100755 Documentation/ABI/testing/sysfs-bus-mdio
+ mode change 100644 => 100755 Documentation/ABI/testing/sysfs-bus-media
+ mode change 100644 => 100755 Documentation/ABI/testing/sysfs-bus-mei
+ mode change 100644 => 100755 Documentation/ABI/testing/sysfs-bus-pci
+ mode change 100644 => 100755 Documentation/ABI/testing/sysfs-bus-pci-devices-cciss
+ mode change 100644 => 100755 drivers/pci/pcie/portdrv.h
+ mode change 100644 => 100755 drivers/pci/proc.c
+
+diff --git a/Documentation/ABI/testing/sysfs-bus-intel_th-devices-pti b/Documentation/ABI/testing/sysfs-bus-intel_th-devices-pti
+old mode 100644
+new mode 100755
+diff --git a/Documentation/ABI/testing/sysfs-bus-intel_th-output-devices b/Documentation/ABI/testing/sysfs-bus-intel_th-output-devices
+old mode 100644
+new mode 100755
+diff --git a/Documentation/ABI/testing/sysfs-bus-mcb b/Documentation/ABI/testing/sysfs-bus-mcb
+old mode 100644
+new mode 100755
+diff --git a/Documentation/ABI/testing/sysfs-bus-mdio b/Documentation/ABI/testing/sysfs-bus-mdio
+old mode 100644
+new mode 100755
+diff --git a/Documentation/ABI/testing/sysfs-bus-media b/Documentation/ABI/testing/sysfs-bus-media
+old mode 100644
+new mode 100755
+diff --git a/Documentation/ABI/testing/sysfs-bus-mei b/Documentation/ABI/testing/sysfs-bus-mei
+old mode 100644
+new mode 100755
+diff --git a/Documentation/ABI/testing/sysfs-bus-pci b/Documentation/ABI/testing/sysfs-bus-pci
+old mode 100644
+new mode 100755
+diff --git a/Documentation/ABI/testing/sysfs-bus-pci-devices-cciss b/Documentation/ABI/testing/sysfs-bus-pci-devices-cciss
+old mode 100644
+new mode 100755
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+index 12d9ec3..fd6073b 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+@@ -120,7 +120,7 @@
+ &uart1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart1_pins &bt_pins &fake_bt_cts>;
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &spi0 {
+diff --git a/drivers/pci/pcie/portdrv.h b/drivers/pci/pcie/portdrv.h
+old mode 100644
+new mode 100755
+diff --git a/drivers/pci/proc.c b/drivers/pci/proc.c
+old mode 100644
+new mode 100755
+-- 
+2.7.4
+

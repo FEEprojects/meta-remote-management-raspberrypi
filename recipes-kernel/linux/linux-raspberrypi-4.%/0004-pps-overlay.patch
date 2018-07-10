@@ -1,0 +1,42 @@
+From 151b7817f39dc0949850abc515e086e9d1cf17a6 Mon Sep 17 00:00:00 2001
+From: vladvelici <vlad.velici@gmail.com>
+Date: Mon, 18 Jun 2018 18:30:49 +0000
+Subject: [PATCH] pps overlay
+
+---
+ arch/arm/boot/dts/bcm283x.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm283x.dtsi b/arch/arm/boot/dts/bcm283x.dtsi
+index 2d8f409..7e4cade 100644
+--- a/arch/arm/boot/dts/bcm283x.dtsi
++++ b/arch/arm/boot/dts/bcm283x.dtsi
+@@ -137,6 +137,12 @@
+ 
+ 			interrupt-controller;
+ 			#interrupt-cells = <2>;
++
++			pps_pins: pps_pins@12 {
++				brcm,pins =     <18>;
++				brcm,function = <0>;    // in
++				brcm,pull =     <0>;    // off
++			};
+ 		};
+ 
+ 		uart0: serial@7e201000 {
+@@ -389,4 +395,12 @@
+ 			clock-frequency = <480000000>;
+ 		};
+ 	};
++
++	pps: pps@12 {
++		compatible = "pps-gpio";
++		pinctrl-names = "default";
++		pinctrl-0 = <&pps_pins>;
++		gpios = <&gpio 18 0>;
++		status = "okay";
++	};
+ };
+-- 
+2.7.4
+

@@ -1,0 +1,62 @@
+From 74427dd114ae5348291481634466910c328cd217 Mon Sep 17 00:00:00 2001
+From: vladvelici <vlad.velici@gmail.com>
+Date: Tue, 19 Jun 2018 15:24:54 +0000
+Subject: [PATCH] fixed intendation
+
+---
+ arch/arm/boot/dts/bcm2710-rpi-3-b.dts | 9 +++++----
+ include/sound/seq_device.h            | 0
+ include/sound/seq_kernel.h            | 0
+ include/sound/sh_dac_audio.h          | 0
+ include/sound/sh_fsi.h                | 0
+ include/sound/simple_card.h           | 0
+ include/sound/simple_card_utils.h     | 0
+ 7 files changed, 5 insertions(+), 4 deletions(-)
+ mode change 100644 => 100755 include/sound/seq_device.h
+ mode change 100644 => 100755 include/sound/seq_kernel.h
+ mode change 100644 => 100755 include/sound/sh_dac_audio.h
+ mode change 100644 => 100755 include/sound/sh_fsi.h
+ mode change 100644 => 100755 include/sound/simple_card.h
+ mode change 100644 => 100755 include/sound/simple_card_utils.h
+
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+index fd6073b..ee4ac92 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+@@ -61,10 +61,11 @@
+ 		brcm,function= <2>; /* alt5=UART1 */
+ 		brcm,pull= <0 2>;
+ 	};
+-    fake_bt_cts: fake_bt_cts {
+-        brcm,pins = <31>;
+-        brcm,function = <1>; /* output */
+-    };
++
++        fake_bt_cts: fake_bt_cts {
++                brcm,pins = <31>;
++                brcm,function = <1>; /* output */
++       };
+ 
+ 
+ 	audio_pins: audio_pins {
+diff --git a/include/sound/seq_device.h b/include/sound/seq_device.h
+old mode 100644
+new mode 100755
+diff --git a/include/sound/seq_kernel.h b/include/sound/seq_kernel.h
+old mode 100644
+new mode 100755
+diff --git a/include/sound/sh_dac_audio.h b/include/sound/sh_dac_audio.h
+old mode 100644
+new mode 100755
+diff --git a/include/sound/sh_fsi.h b/include/sound/sh_fsi.h
+old mode 100644
+new mode 100755
+diff --git a/include/sound/simple_card.h b/include/sound/simple_card.h
+old mode 100644
+new mode 100755
+diff --git a/include/sound/simple_card_utils.h b/include/sound/simple_card_utils.h
+old mode 100644
+new mode 100755
+-- 
+2.7.4
+

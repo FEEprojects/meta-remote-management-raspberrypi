@@ -1,0 +1,78 @@
+From 4b91e6aaba7aea28d6d31d14e771677982de718b Mon Sep 17 00:00:00 2001
+From: vladvelici <vlad.velici@gmail.com>
+Date: Tue, 19 Jun 2018 10:15:56 +0000
+Subject: [PATCH] =?UTF-8?q?=E2=80=9Cpi3-miniuart-bt-overlay=E2=80=9D?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ arch/arm/boot/dts/bcm2710-rpi-3-b.dts       | 21 +++++++++++++--------
+ arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi |  2 ++
+ 2 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+index aadd762..12d9ec3 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+@@ -51,17 +51,22 @@
+ 	};
+ 
+ 	uart0_pins: uart0_pins {
+-		brcm,pins = <32 33>;
+-		brcm,function = <7>; /* alt3=UART0 */
+-		brcm,pull = <0 2>;
+-	};
+-
+-	uart1_pins: uart1_pins {
+ 		brcm,pins;
+ 		brcm,function;
+ 		brcm,pull;
+ 	};
+ 
++	uart1_pins: uart1_pins {
++		brcm,pins= <32 33>;
++		brcm,function= <2>; /* alt5=UART1 */
++		brcm,pull= <0 2>;
++	};
++    fake_bt_cts: fake_bt_cts {
++        brcm,pins = <31>;
++        brcm,function = <1>; /* output */
++    };
++
++
+ 	audio_pins: audio_pins {
+ 		brcm,pins = <40 41>;
+ 		brcm,function = <4>;
+@@ -108,13 +113,13 @@
+ 
+ &uart0 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&uart0_pins &bt_pins>;
++	pinctrl-0 = <&uart0_pins>;
+ 	status = "okay";
+ };
+ 
+ &uart1 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&uart1_pins>;
++	pinctrl-0 = <&uart1_pins &bt_pins &fake_bt_cts>;
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi b/arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi
+index 3f0a56e..1633904 100644
+--- a/arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi
++++ b/arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi
+@@ -1,6 +1,8 @@
+ / {
+ 	aliases {
+ 		ethernet = &ethernet;
++		serial0 = "/soc/serial@7e201000";
++		serial1 = "/soc/serial@7e215040";
+ 	};
+ };
+ 
+-- 
+2.7.4
+

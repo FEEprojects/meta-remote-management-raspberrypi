@@ -1,0 +1,53 @@
+From d8f527c23b66b89d347229b832778fed1e3b5ad4 Mon Sep 17 00:00:00 2001
+From: vladvelici <vlad.velici@gmail.com>
+Date: Thu, 21 Jun 2018 13:23:19 +0000
+Subject: [PATCH] spi-gpio-cs-overlay
+
+---
+ arch/arm/boot/dts/bcm283x.dtsi | 17 +++++++++++++++--
+ drivers/watchdog/sp5100_tco.h  |  0
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+ mode change 100644 => 100755 drivers/watchdog/sp5100_tco.h
+
+diff --git a/arch/arm/boot/dts/bcm283x.dtsi b/arch/arm/boot/dts/bcm283x.dtsi
+index be4a507..825a6e7 100644
+--- a/arch/arm/boot/dts/bcm283x.dtsi
++++ b/arch/arm/boot/dts/bcm283x.dtsi
+@@ -143,6 +143,10 @@
+ 				brcm,function = <0>;    // in
+ 				brcm,pull =     <0>;    // off
+ 			};
++            spi0_cs_pins: spi0_cs_pins {
++            brcm,pins = <25>;
++            brcm,function = <1>; /* out */
++         };
+ 		};
+ 
+ 		uart0: serial@7e201000 {
+@@ -173,9 +177,18 @@
+ 			clocks = <&clocks BCM2835_CLOCK_VPU>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
++            pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
+ 			status = "okay";
+-			cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
+-		};
++			cs-gpios = <0>, <0>, <&gpio 25 1>;
++		
++        spidev@2{
++            compatible = "spidev";
++            reg = <2>;   /* CE2 */
++            #address-cells = <1>;
++            #size-cells = <0>;
++            spi-max-frequency = <500000>;
++         };
++        };
+ 
+ 		i2c0: i2c@7e205000 {
+ 			compatible = "brcm,bcm2835-i2c";
+diff --git a/drivers/watchdog/sp5100_tco.h b/drivers/watchdog/sp5100_tco.h
+old mode 100644
+new mode 100755
+-- 
+2.7.4
+

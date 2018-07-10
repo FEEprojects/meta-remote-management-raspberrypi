@@ -1,0 +1,70 @@
+From 71c617157b6034632cff2bf1c8d87528131decdf Mon Sep 17 00:00:00 2001
+From: vladvelici <vlad.velici@gmail.com>
+Date: Tue, 19 Jun 2018 16:07:29 +0000
+Subject: [PATCH] disable-bt
+
+---
+ arch/arm/boot/dts/bcm2710-rpi-3-b.dts             | 10 +++++-----
+ arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi       |  2 ++
+ drivers/net/ethernet/tile/tilepro.c               |  0
+ drivers/net/ethernet/toshiba/ps3_gelic_wireless.h |  0
+ 4 files changed, 7 insertions(+), 5 deletions(-)
+ mode change 100644 => 100755 drivers/net/ethernet/tile/tilepro.c
+ mode change 100644 => 100755 drivers/net/ethernet/toshiba/ps3_gelic_wireless.h
+
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+index aadd762..01cb145 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+@@ -51,9 +51,9 @@
+ 	};
+ 
+ 	uart0_pins: uart0_pins {
+-		brcm,pins = <32 33>;
+-		brcm,function = <7>; /* alt3=UART0 */
+-		brcm,pull = <0 2>;
++		brcm,pins;
++		brcm,function;
++		brcm,pull;
+ 	};
+ 
+ 	uart1_pins: uart1_pins {
+@@ -108,14 +108,14 @@
+ 
+ &uart0 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&uart0_pins &bt_pins>;
++	pinctrl-0 = <&uart0_pins>;
+ 	status = "okay";
+ };
+ 
+ &uart1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart1_pins>;
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &spi0 {
+diff --git a/arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi b/arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi
+index 3f0a56e..1633904 100644
+--- a/arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi
++++ b/arch/arm/boot/dts/bcm283x-rpi-smsc9514.dtsi
+@@ -1,6 +1,8 @@
+ / {
+ 	aliases {
+ 		ethernet = &ethernet;
++		serial0 = "/soc/serial@7e201000";
++		serial1 = "/soc/serial@7e215040";
+ 	};
+ };
+ 
+diff --git a/drivers/net/ethernet/tile/tilepro.c b/drivers/net/ethernet/tile/tilepro.c
+old mode 100644
+new mode 100755
+diff --git a/drivers/net/ethernet/toshiba/ps3_gelic_wireless.h b/drivers/net/ethernet/toshiba/ps3_gelic_wireless.h
+old mode 100644
+new mode 100755
+-- 
+2.7.4
+
